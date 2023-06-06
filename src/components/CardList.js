@@ -33,11 +33,6 @@ export default function CardList({
               Show answer
             </button>
             <p className="card__answer">{card.answer}</p>
-            <ul className="card__tag-list">
-              {card.tags.map((tag) => {
-                return <li className="card__tag-list-item">#{tag}</li>;
-              })}
-            </ul>
           </section>
         );
       })}
