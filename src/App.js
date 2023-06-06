@@ -8,7 +8,7 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 
 export default function App() {
-  const initialCards = [
+  /* const initialCards = [
     {
       id: uid(),
       question: "What is Rylie's favorite color?",
@@ -23,8 +23,23 @@ export default function App() {
       tags: ["personal", "animals"],
       isBookmarked: true,
     },
-  ];
-  const [allCards, setAllCards] = useLocalStorageState("allCards", []);
+  ]; */
+  const [allCards, setAllCards] = useLocalStorageState("allCards", [
+    {
+      id: uid(),
+      question: "What is Rylie's favorite color?",
+      answer: "Yellow!",
+      tags: ["personal", "colors"],
+      isBookmarked: false,
+    },
+    {
+      id: uid(),
+      question: "What is Rylie's dog called?",
+      answer: "Karlchen!",
+      tags: ["personal", "animals"],
+      isBookmarked: true,
+    },
+  ]);
   const bookmarkedCards = allCards.filter((card) => card.isBookmarked === true);
   const [mainElement, setMainElement] = useState(
     <CardList
@@ -34,9 +49,9 @@ export default function App() {
     />
   );
 
-  if (allCards == null) {
+  /* if (allCards == null) {
     setAllCards(initialCards);
-  }
+  } */
 
   function handleAddNewCard(event) {
     event.preventDefault();

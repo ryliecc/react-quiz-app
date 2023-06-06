@@ -1,8 +1,8 @@
 export default function CardForm({ onAddNewCard }) {
   return (
     <>
-      <h2>Add a new Card!</h2>
-      <form onSubmit={onAddNewCard}>
+      <h2 className="card-form__title">Add a new Card!</h2>
+      <form onSubmit={onAddNewCard} className="card-form">
         <label
           htmlFor="card-form__question"
           className="card-form__question-label"
@@ -29,7 +29,9 @@ export default function CardForm({ onAddNewCard }) {
         <label htmlFor="card-form__tags" className="card-form__tags-label">
           Tags:
         </label>
-        <small>Seperate multiple tags with a space.</small>
+        <small className="card-form__tags-info">
+          Seperate multiple tags with a space.
+        </small>
         <input
           type="text"
           id="card-form__tags"
