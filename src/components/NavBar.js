@@ -8,7 +8,7 @@ export default function NavBar() {
         🤍
       </button>
       <button type="button" className="nav-bar__button">
-        👤
+        ➕
       </button>
     </nav>
   );
