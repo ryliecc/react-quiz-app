@@ -1,3 +1,14 @@
+:root {
+  --color-rose: #f7cac9;
+  --color-rose-lilac: #dec2cb;
+  --color-lilac-evening-sky: #c5b9cd;
+  --color-lilac: #abb1cf;
+  --color-evening-sky: #92a8d1;
+  --color-muted-black: #4e4e56;
+  --color-muted-beige: #dcd0c0;
+  --color-muted-cream: #b1938b;
+}
+
 * {
   background-color: transparent;
   margin: 0;

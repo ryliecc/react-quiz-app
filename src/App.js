@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import useLocalStorageState from "use-local-storage-state";
+import { useState } from "react";
 import { uid } from "uid";
 import NavBar from "./components/NavBar";
 import CardForm from "./components/CardForm";
@@ -26,7 +26,7 @@ export default function App() {
   ];
   const [allCards, setAllCards] = useLocalStorageState("allCards", []);
   const bookmarkedCards = allCards.filter((card) => card.isBookmarked === true);
-  const mainElement = (
+  const [mainElement, setMainElement] = useState(
     <CardList
       displayedCards={allCards}
       onDeleteCard={handleDeleteCard}
@@ -71,7 +71,7 @@ export default function App() {
   }
 
   function handleGoHome() {
-    mainElement = (
+    setMainElement(
       <CardList
         displayedCards={allCards}
         onDeleteCard={handleDeleteCard}
@@ -81,7 +81,7 @@ export default function App() {
   }
 
   function handleGoBookmarks() {
-    mainElement = (
+    setMainElement(
       <CardList
         displayedCards={bookmarkedCards}
         onDeleteCard={handleDeleteCard}
@@ -91,7 +91,7 @@ export default function App() {
   }
 
   function handleGoCardForm() {
-    mainElement = <CardForm onAddNewCards={handleAddNewCard} />;
+    setMainElement(<CardForm onAddNewCards={handleAddNewCard} />);
   }
   return (
     <>

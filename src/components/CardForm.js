@@ -16,7 +16,6 @@ export default function CardForm({ onAddNewCard }) {
           cols="30"
           rows="2"
         ></textarea>
-        {/* Noch einen character counter hier einbauen? */}
         <label htmlFor="card-form__answer" className="card-form__answer-label">
           Answer:
         </label>
@@ -30,6 +29,7 @@ export default function CardForm({ onAddNewCard }) {
         <label htmlFor="card-form__tags" className="card-form__tags-label">
           Tags:
         </label>
+        <small>Seperate multiple tags with a space.</small>
         <input
           type="text"
           id="card-form__tags"
