@@ -1,4 +1,8 @@
-export default function CardList({ displayedCards, onDeleteCard }) {
+export default function CardList({
+  displayedCards,
+  onDeleteCard,
+  onToggleBookmark,
+}) {
   return (
     <div className="card-list">
       {displayedCards.map((card) => {
@@ -10,7 +14,11 @@ export default function CardList({ displayedCards, onDeleteCard }) {
         }
         return (
           <section className="card-list__card" key={card.id}>
-            <button type="button" className="card__bookmark-button">
+            <button
+              type="button"
+              className="card__bookmark-button"
+              onClick={() => onToggleBookmark(card.id)}
+            >
               {buttonIcon}
             </button>
             <button

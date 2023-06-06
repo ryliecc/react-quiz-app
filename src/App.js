@@ -47,6 +47,16 @@ export default function App() {
     form.elements.question.focus();
   }
 
+  function handleToggleBookmark(toBookmark) {
+    const updatedCards = allCards.map((card) => {
+      if (card.id === toBookmark) {
+        return { ...card, isBookmarked: !card.isBookmarked };
+      }
+      return card;
+    });
+    setAllCards(updatedCards);
+  }
+
   function handleDeleteCard(toDelete) {
     const updatedCards = allCards.filter((card) => card.id !== toDelete);
     setAllCards(updatedCards);
@@ -56,7 +66,11 @@ export default function App() {
       <Header />
       <Main>
         <CardForm onAddNewCards={handleAddNewCard} />
-        <CardList displayedCards={allCards} onDeleteCard={handleDeleteCard} />
+        <CardList
+          displayedCards={allCards}
+          onDeleteCard={handleDeleteCard}
+          onToggleBookmark={handleToggleBookmark}
+        />
       </Main>
       <NavBar />
     </>
