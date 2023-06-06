@@ -1,4 +1,4 @@
-export default function CardList({ displayedCards }) {
+export default function CardList({ displayedCards, onDeleteCard }) {
   return (
     <div className="card-list">
       {displayedCards.map((card) => {
@@ -12,6 +12,13 @@ export default function CardList({ displayedCards }) {
           <section className="card-list__card" key={card.id}>
             <button type="button" className="card__bookmark-button">
               {buttonIcon}
+            </button>
+            <button
+              type="button"
+              className="card__delete-button"
+              onClick={() => onDeleteCard(card.id)}
+            >
+              🗑️
             </button>
             <p className="card__question">{card.question}</p>
             <button type="button" className="card__show-answer-button">

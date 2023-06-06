@@ -46,12 +46,17 @@ export default function App() {
     form.reset();
     form.elements.question.focus();
   }
+
+  function handleDeleteCard(toDelete) {
+    const updatedCards = allCards.filter((card) => card.id !== toDelete);
+    setAllCards(updatedCards);
+  }
   return (
     <>
       <Header />
       <Main>
         <CardForm onAddNewCards={handleAddNewCard} />
-        <CardList displayedCards={allCards} />
+        <CardList displayedCards={allCards} onDeleteCard={handleDeleteCard} />
       </Main>
       <NavBar />
     </>
