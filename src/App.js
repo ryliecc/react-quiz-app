@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import { uid } from "uid";
+import NavBar from "./components/NavBar";
+import CardForm from "./components/CardForm";
+import CardList from "./components/CardList";
+import Header from "./components/Header";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <CardForm />
+      <CardList />
+      <NavBar />
+    </>
   );
 }
-
-export default App;
