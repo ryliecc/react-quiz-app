@@ -30,7 +30,12 @@ export default function CardForm({ onAddNewCard }) {
         <label htmlFor="card-form__tags" className="card-form__tags-label">
           Tags:
         </label>
-        <input type="text" id="card-form__tags" class="card-form__tags"></input>
+        <input
+          type="text"
+          id="card-form__tags"
+          class="card-form__tags"
+          name="tags"
+        ></input>
         <button type="submit" className="card-form__submit-button">
           Submit
         </button>

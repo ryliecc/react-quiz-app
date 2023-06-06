@@ -21,7 +21,7 @@ export default function App() {
       question: "What is Rylie's dog called?",
       answer: "Karlchen!",
       tags: ["personal", "animals"],
-      isBookmarked: false,
+      isBookmarked: true,
     },
   ];
   const [allCards, setAllCards] = useLocalStorageState("allCards", []);
@@ -33,23 +33,44 @@ export default function App() {
   function handleAddNewCard(event) {
     event.preventDefault();
     const form = event.target;
+    const originalTags = form.elements.tags.value;
+    const splitTags = originalTags.split(" ");
     const newCard = {
       id: uid(),
       question: form.elements.question.value,
       answer: form.elements.answer.value,
-      tags: [form.elements.tags.value],
+      tags: splitTags,
       isBookmarked: false,
     };
     setAllCards([...allCards, newCard]);
     form.reset();
     form.elements.question.focus();
   }
+
+  function handleToggleBookmark(toBookmark) {
+    const updatedCards = allCards.map((card) => {
+      if (card.id === toBookmark) {
+        return { ...card, isBookmarked: !card.isBookmarked };
+      }
+      return card;
+    });
+    setAllCards(updatedCards);
+  }
+
+  function handleDeleteCard(toDelete) {
+    const updatedCards = allCards.filter((card) => card.id !== toDelete);
+    setAllCards(updatedCards);
+  }
   return (
     <>
       <Header />
       <Main>
-        <CardForm onAddNewCard={handleAddNewCard} />
-        <CardList />
+        <CardForm onAddNewCards={handleAddNewCard} />
+        <CardList
+          displayedCards={allCards}
+          onDeleteCard={handleDeleteCard}
+          onToggleBookmark={handleToggleBookmark}
+        />
       </Main>
       <NavBar />
     </>
