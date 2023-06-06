@@ -25,6 +25,14 @@ export default function App() {
     },
   ];
   const [allCards, setAllCards] = useLocalStorageState("allCards", []);
+  const bookmarkedCards = allCards.filter((card) => card.isBookmarked === true);
+  const mainElement = (
+    <CardList
+      displayedCards={allCards}
+      onDeleteCard={handleDeleteCard}
+      onToggleBookmark={handleToggleBookmark}
+    />
+  );
 
   if (allCards == null) {
     setAllCards(initialCards);
@@ -61,18 +69,39 @@ export default function App() {
     const updatedCards = allCards.filter((card) => card.id !== toDelete);
     setAllCards(updatedCards);
   }
+
+  function handleGoHome() {
+    mainElement = (
+      <CardList
+        displayedCards={allCards}
+        onDeleteCard={handleDeleteCard}
+        onToggleBookmark={handleToggleBookmark}
+      />
+    );
+  }
+
+  function handleGoBookmarks() {
+    mainElement = (
+      <CardList
+        displayedCards={bookmarkedCards}
+        onDeleteCard={handleDeleteCard}
+        onToggleBookmark={handleToggleBookmark}
+      />
+    );
+  }
+
+  function handleGoCardForm() {
+    mainElement = <CardForm onAddNewCards={handleAddNewCard} />;
+  }
   return (
     <>
       <Header />
-      <Main>
-        <CardForm onAddNewCards={handleAddNewCard} />
-        <CardList
-          displayedCards={allCards}
-          onDeleteCard={handleDeleteCard}
-          onToggleBookmark={handleToggleBookmark}
-        />
-      </Main>
-      <NavBar />
+      <Main>{mainElement}</Main>
+      <NavBar
+        onGoHome={handleGoHome}
+        onGoBookmarks={handleGoBookmarks}
+        onGoCardForm={handleGoCardForm}
+      />
     </>
   );
 }
