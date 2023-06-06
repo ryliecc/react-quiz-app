@@ -12,7 +12,7 @@ export default function CardForm({ onAddNewCard }) {
         <textarea
           id="card-form__question"
           name="question"
-          class="card-form__question"
+          className="card-form__question"
           cols="30"
           rows="2"
         ></textarea>
@@ -22,20 +22,17 @@ export default function CardForm({ onAddNewCard }) {
         <textarea
           id="card-form__answer"
           name="answer"
-          class="card-form__answer"
+          className="card-form__answer"
           cols="30"
           rows="2"
         ></textarea>
-        <label htmlFor="card-form__tags" className="card-form__tags-label">
+        <label htmlFor="card-form__tag" className="card-form__tag-label">
           Tags:
         </label>
-        <small className="card-form__tags-info">
-          Seperate multiple tags with a space.
-        </small>
         <input
           type="text"
-          id="card-form__tags"
-          class="card-form__tags"
+          id="card-form__tag"
+          className="card-form__tag"
           name="tags"
         ></input>
         <button type="submit" className="card-form__submit-button">
