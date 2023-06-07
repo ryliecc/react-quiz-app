@@ -2,22 +2,20 @@
   display: flex;
   flex-direction: column;
   align-content: space-between;
+  margin-bottom: 4em;
 }
 .card-list__card {
   display: flex;
-  position: relative;
   flex-direction: column;
   border: dotted var(--color-muted-beige);
   background-color: var(--color-muted-cream);
   margin: 0.5em;
   padding: 0.8em;
   gap: 0.5em;
+  flex-wrap: wrap;
 }
 .card__bookmark-button {
   z-index: 1;
-  position: absolute;
-  width: min-content;
-  padding: 0.2em;
   right: 0.3em;
   bottom: 3.4em;
   font-size: 1.8em;
@@ -25,9 +23,6 @@
 }
 .card__delete-button {
   z-index: 1;
-  position: absolute;
-  padding: 0.2em;
-  width: 1.6em;
   top: 3.7em;
   font-size: 1.7em;
   right: 0.2em;
@@ -53,8 +48,16 @@
   display: flex;
   justify-content: flex-start;
   gap: 0.4em;
+  list-style: none;
 }
 .card__tag-list-item {
   border: solid thin;
   padding: 0.3em;
+}
+
+.card__button-section {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 2;
+  gap: 0.5em;
 }
