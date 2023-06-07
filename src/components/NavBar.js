@@ -10,7 +10,7 @@ export default function NavBar({ onGoHome, onGoBookmarks, onGoCardForm }) {
           className="nav-bar__button"
           onClick={onGoBookmarks}
         >
-          🤍
+          ❤️
         </button>
         <button
           type="button"

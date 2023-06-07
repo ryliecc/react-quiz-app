@@ -24,7 +24,7 @@ export const defaultCards = [
     id: "card-487593",
     question: "Where does Rylie want to live one day?",
     answer: "Ireland",
-    tags: ["personal", "dreams", "travel"],
+    tags: ["personal", "travel", "dreams"],
     isBookmarked: true,
   },
   {

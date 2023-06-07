@@ -11,14 +11,16 @@ export default function Card({
 }) {
   const bookmarkIcon = isBookmarked ? "❤️" : "🤍";
 
+  console.log(tags);
   const tagList = tags.map((tag) => {
+    const tagID = `tag-${uid()}`;
     return (
-      <li className="card__tag-list-item" id={uid()} key={uid()}>
-        #{tag}
+      <li className="card__tag-list-item" id={tagID} key={tagID}>
+        # {tag}
       </li>
     );
   });
-  console.log(tags);
+
   return (
     <section className="card-list__card" id={id}>
       <p className="card__question">{question}</p>
@@ -39,7 +41,7 @@ export default function Card({
           <button
             type="button"
             className="card__delete-button"
-            onClick={onDeleteCard}
+            onClick={() => onDeleteCard(id)}
           >
             🗑️
           </button>

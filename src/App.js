@@ -12,7 +12,7 @@ export default function App() {
   const [allCards, setAllCards] = useLocalStorageState("allCards", {
     defaultValue: defaultCards,
   });
-  console.log(allCards);
+
   const cardList = allCards.map((card) => (
     <Card
       id={card.id}
@@ -48,7 +48,8 @@ export default function App() {
   }
 
   function handleDeleteCard(toDeleteId) {
-    console.log("Delete clicked", toDeleteId);
+    const remainingCards = allCards.filter((card) => toDeleteId !== card.id);
+    setAllCards(remainingCards);
   }
 
   return (

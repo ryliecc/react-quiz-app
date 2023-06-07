@@ -1,30 +1,12 @@
-import { useState } from "react";
-import { uid } from "uid";
-
 export default function CardForm({ addCard }) {
-  const [tags, setTags] = useState([]);
-
   function handleSubmitCardForm(event) {
-    console.log("submit has started", tags);
     event.preventDefault();
     const form = event.target;
-    console.log(form.elements.tags.value);
     const tagString = form.elements.tags.value;
-    console.log(tagString, "this is the tag string");
-    setTags([tagString.split(" ")]);
-    console.log(tags);
-    setTags(
-      tags.map((tag) => {
-        return {
-          id: `tag-${uid()}`,
-          hashtext: `#${tag}`,
-        };
-      })
-    );
-    console.log(tags);
-    const question = form.elements.question.value;
-    const answer = form.elements.answer.value;
-    addCard(question, answer, tags);
+    const tagArray = tagString.split(" ");
+    const questionString = form.elements.question.value;
+    const answerString = form.elements.answer.value;
+    addCard(questionString, answerString, tagArray);
     form.reset();
   }
   return (
