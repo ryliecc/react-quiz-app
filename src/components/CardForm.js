@@ -1,20 +1,26 @@
 import { useState } from "react";
 
 export default function CardForm({ addCard }) {
-  const [tags, setTags] = useState("");
+  const [tags, setTags] = useState([]);
 
-  function submitCardForm(event) {
+  function handleSubmitCardForm(event) {
+    console.log("submit has started", tags);
     event.preventDefault();
     const form = event.target;
-    setTags(form.elements.tags.value);
+    console.log(form.elements.tags.value);
+    const tagString = form.elements.tags.value;
+    console.log(tagString, "this is the tag string");
+    const tagArray = tagString.split(" ");
+    console.log(tagArray, "this is the tag array");
+    setTags([tagArray]);
+    console.log(tags);
     const question = form.elements.question.value;
     const answer = form.elements.answer.value;
     addCard(question, answer, tags);
-    setTags("");
     form.reset();
   }
   return (
-    <form onSubmit={submitCardForm} className="card-form">
+    <form onSubmit={handleSubmitCardForm} className="card-form">
       <h2 className="card-form__title">Add a new Card!</h2>
       <label
         htmlFor="card-form__question"

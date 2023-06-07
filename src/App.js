@@ -9,14 +9,13 @@ import { defaultCards } from "./data.js";
 import Card from "./components/Card";
 
 export default function App() {
-  const [allCards, setAllCards] = useLocalStorageState("allCards", []);
+  let [allCards, setAllCards] = useLocalStorageState("allCards", []);
 
-  if (allCards === undefined) {
-    console.log("no local storage");
-    setAllCards(defaultCards);
-  } else {
-    console.log("local storage available");
-  }
+  if ({ allCards } === undefined) {
+    console.log("allcards state undefined");
+    setAllCards([defaultCards]);
+    console.log("cards set to default");
+  } else console.log("all is well");
 
   function addCard(question, answer, tags) {
     const newCard = {
