@@ -24,26 +24,30 @@ export default function Card({
   console.log(tags);
   return (
     <section className="card-list__card" id={id}>
-      <button
-        type="button"
-        className="card__bookmark-button"
-        onClick={() => onToggleBookmark(id)}
-      >
-        {bookmarkIcon}
-      </button>
-      <button
-        type="button"
-        className="card__delete-button"
-        onClick={onDeleteCard}
-      >
-        🗑️
-      </button>
       <p className="card__question">{question}</p>
       <button type="button" className="card__show-answer-button">
         Show answer
       </button>
       <p className="card__answer">{answer}</p>
-      <ul className="card__tag-list">{tagList}</ul>
+      <ul className="card__tag-list">
+        {tagList}
+        <section className="card__button-section">
+          <button
+            type="button"
+            className="card__bookmark-button"
+            onClick={() => onToggleBookmark(id)}
+          >
+            {bookmarkIcon}
+          </button>
+          <button
+            type="button"
+            className="card__delete-button"
+            onClick={onDeleteCard}
+          >
+            🗑️
+          </button>
+        </section>
+      </ul>
     </section>
   );
 }
