@@ -1,16 +1,6 @@
-export default function CardForm({ addCard }) {
-  function handleSubmitCardForm(event) {
-    event.preventDefault();
-    const form = event.target;
-    const tagString = form.elements.tags.value;
-    const tagArray = tagString.split(" ");
-    const questionString = form.elements.question.value;
-    const answerString = form.elements.answer.value;
-    addCard(questionString, answerString, tagArray);
-    form.reset();
-  }
+export default function CardForm({ onSubmit }) {
   return (
-    <form onSubmit={handleSubmitCardForm} className="card-form">
+    <form onSubmit={onSubmit} className="card-form">
       <h2 className="card-form__title">Add a new Card!</h2>
       <label
         htmlFor="card-form__question"

@@ -26,15 +26,19 @@ export default function App() {
     />
   ));
 
-  function addCard(question, answer, tags) {
+  function handleSubmitCardForm(event) {
+    event.preventDefault();
+    const form = event.target;
+    const tags = form.elements.tags.value.split(" ");
     const newCard = {
       id: `card-${uid()}`,
-      question: question,
-      answer: answer,
+      question: form.elements.question.value,
+      answer: form.elements.answer.value,
       tags: [...tags],
       isBookmarked: false,
     };
     setAllCards([newCard, ...allCards]);
+    form.reset();
   }
 
   function handleToggleBookmark(toBookmarkId) {
@@ -56,7 +60,7 @@ export default function App() {
     <>
       <Header />
       <Main>
-        <CardForm addCard={addCard} />
+        <CardForm onSubmit={handleSubmitCardForm} />
         <CardList>{cardList}</CardList>
       </Main>
       <NavBar />
