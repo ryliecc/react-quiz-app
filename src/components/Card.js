@@ -9,12 +9,7 @@ export default function Card({
   onToggleBookmark,
   onDeleteCard,
 }) {
-  let bookmarkIcon;
-  if (isBookmarked === true) {
-    bookmarkIcon = "❤️";
-  } else {
-    bookmarkIcon = "🤍";
-  }
+  const bookmarkIcon = isBookmarked ? "❤️" : "🤍";
 
   const tagList = tags.map((tag) => {
     return (

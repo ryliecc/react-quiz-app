@@ -29,7 +29,7 @@ export const defaultCards = [
   },
   {
     id: "card-295938",
-    question: "What does every state array need??",
+    question: "What does every state array need?",
     answer: "Keys",
     tags: ["programming", "React.js"],
     isBookmarked: true,

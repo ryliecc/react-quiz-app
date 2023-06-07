@@ -9,13 +9,22 @@ import { defaultCards } from "./data.js";
 import Card from "./components/Card";
 
 export default function App() {
-  let [allCards, setAllCards] = useLocalStorageState("allCards", []);
-
-  if ({ allCards } === undefined) {
-    console.log("allcards state undefined");
-    setAllCards([defaultCards]);
-    console.log("cards set to default");
-  } else console.log("all is well");
+  const [allCards, setAllCards] = useLocalStorageState("allCards", {
+    defaultValue: defaultCards,
+  });
+  console.log(allCards);
+  const cardList = allCards.map((card) => (
+    <Card
+      id={card.id}
+      key={card.id}
+      question={card.question}
+      answer={card.answer}
+      tags={card.tags}
+      isBookmarked={card.isBookmarked}
+      onToggleBookmark={handleToggleBookmark}
+      onDeleteCard={handleDeleteCard}
+    />
+  ));
 
   function addCard(question, answer, tags) {
     const newCard = {
@@ -29,24 +38,18 @@ export default function App() {
   }
 
   function handleToggleBookmark(toBookmarkId) {
-    console.log("Bookmark toggled", toBookmarkId);
+    const updatedCards = allCards.map((card) => {
+      if (toBookmarkId === card.id) {
+        return { ...card, isBookmarked: !card.isBookmarked };
+      }
+      return card;
+    });
+    setAllCards(updatedCards);
   }
+
   function handleDeleteCard(toDeleteId) {
     console.log("Delete clicked", toDeleteId);
   }
-
-  const cardList = allCards.map((card) => (
-    <Card
-      id={card.id}
-      key={card.id}
-      question={card.question}
-      answer={card.answer}
-      tags={card.tags}
-      isBookmarked={card.isBookmarked}
-      onToggleBookmark={handleToggleBookmark}
-      onDeleteCard={handleDeleteCard}
-    />
-  ));
 
   return (
     <>
