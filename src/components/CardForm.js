@@ -13,11 +13,14 @@ export default function CardForm({ addCard }) {
     console.log(tagString, "this is the tag string");
     setTags([tagString.split(" ")]);
     console.log(tags);
-    const tagArray = tags.map((tag) => {
-      id: `tag-${uid()}`;
-      hashtext: `#${tag}`;
-    });
-    setTags([tagArray]);
+    setTags(
+      tags.map((tag) => {
+        return {
+          id: `tag-${uid()}`,
+          hashtext: `#${tag}`,
+        };
+      })
+    );
     console.log(tags);
     const question = form.elements.question.value;
     const answer = form.elements.answer.value;
