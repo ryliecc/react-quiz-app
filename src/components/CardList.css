@@ -43,6 +43,11 @@
 }
 .card__answer {
   visibility: hidden;
+  align-self: center;
+  font-size: 1.2em;
+}
+.card__answer--unhide {
+  visibility: visible;
 }
 .card__tag-list {
   display: flex;

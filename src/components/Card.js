@@ -1,17 +1,23 @@
+import { useState } from "react";
 import { uid } from "uid";
 
 export default function Card({
   id,
   question,
+  onClick,
   answer,
   tags,
   isBookmarked,
   onToggleBookmark,
   onDeleteCard,
 }) {
+  const [isHidden, setHidden] = useState(true);
+  const answerClass = isHidden
+    ? "card__answer"
+    : "card__answer card__answer--unhide";
+  const buttonText = isHidden ? "Show answer" : "Hide answer";
   const bookmarkIcon = isBookmarked ? "❤️" : "🤍";
 
-  console.log(tags);
   const tagList = tags.map((tag) => {
     const tagID = `tag-${uid()}`;
     return (
@@ -21,13 +27,21 @@ export default function Card({
     );
   });
 
+  function handleShowAnswer() {
+    setHidden(!isHidden);
+  }
+
   return (
     <section className="card-list__card" id={id}>
       <p className="card__question">{question}</p>
-      <button type="button" className="card__show-answer-button">
-        Show answer
+      <button
+        type="button"
+        className="card__show-answer-button"
+        onClick={handleShowAnswer}
+      >
+        {buttonText}
       </button>
-      <p className="card__answer">{answer}</p>
+      <p className={answerClass}>{answer}</p>
       <ul className="card__tag-list">
         {tagList}
         <section className="card__button-section">
