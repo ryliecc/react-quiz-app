@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { uid } from "uid";
 
 export default function CardForm({ addCard }) {
   const [tags, setTags] = useState([]);
@@ -10,8 +11,12 @@ export default function CardForm({ addCard }) {
     console.log(form.elements.tags.value);
     const tagString = form.elements.tags.value;
     console.log(tagString, "this is the tag string");
-    const tagArray = tagString.split(" ");
-    console.log(tagArray, "this is the tag array");
+    setTags([tagString.split(" ")]);
+    console.log(tags);
+    const tagArray = tags.map((tag) => {
+      id: `tag-${uid()}`;
+      hashtext: `#${tag}`;
+    });
     setTags([tagArray]);
     console.log(tags);
     const question = form.elements.question.value;
