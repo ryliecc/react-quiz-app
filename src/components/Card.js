@@ -1,3 +1,5 @@
+import { uid } from "uid";
+
 export default function Card({
   id,
   question,
@@ -16,7 +18,7 @@ export default function Card({
 
   const tagList = tags.map((tag) => {
     return (
-      <li className="card__tag-list-item" id={("tag", { id })}>
+      <li className="card__tag-list-item" id={uid()} key={uid()}>
         {tag}
       </li>
     );

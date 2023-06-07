@@ -26,7 +26,7 @@ export default function App() {
       tags: [...tags],
       isBookmarked: false,
     };
-    setAllCards([...allCards, newCard]);
+    setAllCards([newCard, ...allCards]);
   }
 
   function handleToggleBookmark(toBookmarkId) {
