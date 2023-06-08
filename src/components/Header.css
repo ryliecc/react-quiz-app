@@ -1,0 +1,22 @@
+.header {
+  background-color: var(--color-rose);
+  height: 5em;
+  display: flex;
+}
+
+.header__h1 {
+  width: 100%;
+  font-size: 2.2em;
+  text-align: center;
+  padding-top: 0.6em;
+}
+
+.header__plus-svg {
+  position: relative;
+  width: 3em;
+  right: 0;
+  top: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0.5em;
+}

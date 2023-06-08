@@ -6,7 +6,7 @@ export default function CardForm({ onSubmit }) {
         htmlFor="card-form__question"
         className="card-form__question-label"
       >
-        Question:
+        question:
       </label>
       <textarea
         id="card-form__question"
@@ -17,7 +17,7 @@ export default function CardForm({ onSubmit }) {
         placeholder="e.g.: What was the name of Rylie's first dog?"
       ></textarea>
       <label htmlFor="card-form__answer" className="card-form__answer-label">
-        Answer:
+        answer:
       </label>
       <textarea
         id="card-form__answer"
@@ -28,11 +28,9 @@ export default function CardForm({ onSubmit }) {
         placeholder="e.g.: Laila!"
       ></textarea>
       <label htmlFor="card-form__tags" className="card-form__tags-label">
-        Tags:{" "}
-        <span>
-          Seperate tags with a simple hit on your space bar. No comma needed.
-        </span>
+        tags:{" "}
       </label>
+
       <input
         type="text"
         id="card-form__tags"
@@ -40,6 +38,9 @@ export default function CardForm({ onSubmit }) {
         name="tags"
         placeholder="e.g.: personal pets memories"
       ></input>
+      <small className="card-form__tags-info">
+        Seperate tags with a simple hit on your space bar. No comma needed.
+      </small>
       <button type="submit" className="card-form__submit-button">
         Submit
       </button>
