@@ -1,6 +1,10 @@
-export default function CardForm({ onSubmit }) {
+export default function CardForm({ onSubmit, showForm }) {
   return (
-    <form onSubmit={onSubmit} className="card-form">
+    <form
+      onSubmit={onSubmit}
+      className="card-form"
+      style={{ visibility: showForm ? "visible" : "collapse" }}
+    >
       <h2 className="card-form__title">Add a new Card!</h2>
       <label
         htmlFor="card-form__question"

@@ -7,11 +7,14 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import { defaultCards } from "./data.js";
 import Card from "./components/Card";
+import { useState } from "react";
 
 export default function App() {
   const [allCards, setAllCards] = useLocalStorageState("allCards", {
     defaultValue: defaultCards,
   });
+
+  const [showForm, setShowForm] = useState(false);
 
   const cardList = allCards.map((card) => (
     <Card
@@ -25,6 +28,10 @@ export default function App() {
       onDeleteCard={handleDeleteCard}
     />
   ));
+
+  function handleShowForm() {
+    setShowForm(!showForm);
+  }
 
   function handleSubmitCardForm(event) {
     event.preventDefault();
@@ -58,9 +65,10 @@ export default function App() {
 
   return (
     <>
-      <Header />
+      <Header handleShowForm={handleShowForm} showForm={showForm}>
+        <CardForm onSubmit={handleSubmitCardForm} showForm={showForm} />
+      </Header>
       <Main>
-        <CardForm onSubmit={handleSubmitCardForm} />
         <CardList>{cardList}</CardList>
       </Main>
       <NavBar />
