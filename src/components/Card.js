@@ -2,6 +2,7 @@ import { useState } from "react";
 import { uid } from "uid";
 import { ReactComponent as BookmarkIconSVG } from "./../assets/bookmark.svg";
 import { ReactComponent as BookmarkFilledIconSVG } from "./../assets/bookmark-filled.svg";
+import { ReactComponent as XMarkSVG } from "./../assets/x-mark.svg";
 
 export default function Card({
   id,
@@ -59,28 +60,18 @@ export default function Card({
       <p className={answerClass}>{answer}</p>
       <ul className="card__tag-list">
         {tagList}
-        <section className="card__button-section">
-          <button
-            type="button"
-            className="card__bookmark-button"
-            onClick={() => onToggleBookmark(id)}
-          >
-            {bookmarkIcon}
-          </button>
-          <button
-            type="button"
-            className="card__delete-button"
-            onClick={() => onDeleteCard(id)}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              className="card__delete-button--svg"
-            >
-              <path d="M18 19c0 1.66-1.34 3-3 3H8c-1.66 0-3-1.34-3-3V7H4V4h4.5l1-1h4l1 1H19v3h-1v12M6 7v12c0 1.1.9 2 2 2h7c1.1 0 2-.9 2-2V7H6m12-1V5h-4l-1-1h-3L9 5H5v1h13M8 9h1v10H8V9m6 0h1v10h-1V9Z" />
-            </svg>
-          </button>
-        </section>
+
+        <button
+          type="button"
+          className="card__bookmark-button"
+          onClick={() => onToggleBookmark(id)}
+        >
+          {bookmarkIcon}
+        </button>
+        <XMarkSVG
+          className="card__delete-button"
+          onClick={() => onDeleteCard(id)}
+        />
       </ul>
     </section>
   );
