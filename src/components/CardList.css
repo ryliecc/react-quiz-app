@@ -6,6 +6,12 @@
   padding: 0.8em;
   gap: 0.8em;
 }
+.card-list__title {
+  border: solid var(--color-muted-cream);
+  background-color: var(--color-muted-beige);
+  text-align: center;
+  padding: 0.4em;
+}
 .card-list__card {
   display: flex;
   flex-direction: column;
