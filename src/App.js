@@ -81,10 +81,10 @@ export default function App() {
 
   function handleDeleteCard(toDeleteId) {
     setAllCards((prevAllCards) => {
-      prevAllCards.filter((card) => toDeleteId !== card.id);
+      return prevAllCards.filter((card) => toDeleteId !== card.id);
     });
     setDisplayedCards((prevDisplayedCards) => {
-      prevDisplayedCards.filter((card) => toDeleteId !== card.id);
+      return prevDisplayedCards.filter((card) => toDeleteId !== card.id);
     });
   }
 
