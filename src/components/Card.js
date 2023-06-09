@@ -7,6 +7,7 @@ export default function Card({
   answer,
   tags,
   isBookmarked,
+  onShowTaggedCards,
   onToggleBookmark,
   onDeleteCard,
 }) {
@@ -20,7 +21,12 @@ export default function Card({
   const tagList = tags.map((tag) => {
     const tagID = `tag-${uid()}`;
     return (
-      <li className="card__tag-list-item" id={tagID} key={tagID}>
+      <li
+        className="card__tag-list-item"
+        id={tagID}
+        key={tagID}
+        onClick={() => onShowTaggedCards(tag)}
+      >
         # {tag}
       </li>
     );

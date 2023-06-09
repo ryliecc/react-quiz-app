@@ -14,7 +14,7 @@ export default function App() {
     defaultValue: defaultCards,
   });
 
-  let displayedCards = allCards;
+  const [displayedCards, setDisplayedCards] = useState(allCards);
 
   const [showForm, setShowForm] = useState(false);
 
@@ -25,6 +25,7 @@ export default function App() {
       question={card.question}
       answer={card.answer}
       tags={card.tags}
+      onShowTaggedCards={handleShowTaggedCards}
       isBookmarked={card.isBookmarked}
       onToggleBookmark={handleToggleBookmark}
       onDeleteCard={handleDeleteCard}
@@ -50,14 +51,29 @@ export default function App() {
     form.reset();
   }
 
+  function handleShowTaggedCards(tagID) {
+    const taggedCards = allCards.filter((card) => card.tags.includes(tagID));
+    setDisplayedCards(taggedCards);
+  }
+
   function handleToggleBookmark(toBookmarkId) {
-    const updatedCards = allCards.map((card) => {
-      if (toBookmarkId === card.id) {
-        return { ...card, isBookmarked: !card.isBookmarked };
-      }
-      return card;
-    });
-    setAllCards(updatedCards);
+    setAllCards((prevAllCards) =>
+      prevAllCards.map((card) => {
+        if (toBookmarkId === card.id) {
+          return { ...card, isBookmarked: !card.isBookmarked };
+        }
+        return card;
+      })
+    );
+
+    setDisplayedCards((prevDisplayedCards) =>
+      prevDisplayedCards.map((card) => {
+        if (toBookmarkId === card.id) {
+          return { ...card, isBookmarked: !card.isBookmarked };
+        }
+        return card;
+      })
+    );
   }
 
   function handleDeleteCard(toDeleteId) {
@@ -66,14 +82,14 @@ export default function App() {
   }
 
   function handleGoHome() {
-    displayedCards = allCards;
+    setDisplayedCards(allCards);
   }
 
   function handleGoBookmarks() {
     const bookmarkedCards = allCards.filter(
       (card) => card.isBookmarked === true
     );
-    displayedCards = bookmarkedCards;
+    setDisplayedCards(bookmarkedCards);
   }
 
   return (
