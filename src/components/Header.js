@@ -1,7 +1,24 @@
-export default function Header() {
+import { ReactComponent as PlusCircleIcon } from "./../assets/PlusCircle.svg";
+import { ReactComponent as MinusCircleIcon } from "./../assets/MinusCircle.svg";
+
+export default function Header({ handleShowForm, showForm, children }) {
+  const toggleShowIcon = showForm ? (
+    <MinusCircleIcon
+      className="header__show-form-svg"
+      onClick={handleShowForm}
+    />
+  ) : (
+    <PlusCircleIcon
+      className="header__show-form-svg"
+      onClick={handleShowForm}
+    />
+  );
+
   return (
-    <>
-      <h1 className="header__title">Rylie's QuizApp</h1>
-    </>
+    <header className="header">
+      <h1 className="header__h1">React QuizApp</h1>
+      {toggleShowIcon}
+      {children}
+    </header>
   );
 }

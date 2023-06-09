@@ -1,26 +1,16 @@
-import { useState } from "react";
-
-export default function CardForm({ addCard }) {
-  const [tags, setTags] = useState("");
-
-  function submitCardForm(event) {
-    event.preventDefault();
-    const form = event.target;
-    setTags(form.elements.tags.value);
-    const question = form.elements.question.value;
-    const answer = form.elements.answer.value;
-    addCard(question, answer, tags);
-    setTags("");
-    form.reset();
-  }
+export default function CardForm({ onSubmit, showForm }) {
   return (
-    <form onSubmit={submitCardForm} className="card-form">
+    <form
+      onSubmit={onSubmit}
+      className="card-form"
+      style={{ visibility: showForm ? "visible" : "collapse" }}
+    >
       <h2 className="card-form__title">Add a new Card!</h2>
       <label
         htmlFor="card-form__question"
         className="card-form__question-label"
       >
-        Question:
+        question:
       </label>
       <textarea
         id="card-form__question"
@@ -28,9 +18,10 @@ export default function CardForm({ addCard }) {
         className="card-form__question"
         cols="30"
         rows="2"
+        placeholder="e.g.: What was the name of Rylie's first dog?"
       ></textarea>
       <label htmlFor="card-form__answer" className="card-form__answer-label">
-        Answer:
+        answer:
       </label>
       <textarea
         id="card-form__answer"
@@ -38,16 +29,22 @@ export default function CardForm({ addCard }) {
         className="card-form__answer"
         cols="30"
         rows="2"
+        placeholder="e.g.: Laila!"
       ></textarea>
       <label htmlFor="card-form__tags" className="card-form__tags-label">
-        Tags:
+        tags:
+        <small className="card-form__tags-info">
+          Seperate tags with a comma.
+        </small>
       </label>
       <input
         type="text"
         id="card-form__tags"
         className="card-form__tags"
         name="tags"
+        placeholder="e.g.: personal pets memories"
       ></input>
+
       <button type="submit" className="card-form__submit-button">
         Submit
       </button>
