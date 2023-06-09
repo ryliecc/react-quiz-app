@@ -32,9 +32,11 @@ export default function CardForm({ onSubmit, showForm }) {
         placeholder="e.g.: Laila!"
       ></textarea>
       <label htmlFor="card-form__tags" className="card-form__tags-label">
-        tags:{" "}
+        tags:
+        <small className="card-form__tags-info">
+          Seperate tags with a comma.
+        </small>
       </label>
-
       <input
         type="text"
         id="card-form__tags"
@@ -42,9 +44,7 @@ export default function CardForm({ onSubmit, showForm }) {
         name="tags"
         placeholder="e.g.: personal pets memories"
       ></input>
-      <small className="card-form__tags-info">
-        Seperate tags with a comma.
-      </small>
+
       <button type="submit" className="card-form__submit-button">
         Submit
       </button>
