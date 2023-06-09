@@ -14,9 +14,11 @@ export default function App() {
     defaultValue: defaultCards,
   });
 
+  let displayedCards = allCards;
+
   const [showForm, setShowForm] = useState(false);
 
-  const cardList = allCards.map((card) => (
+  let cardList = displayedCards.map((card) => (
     <Card
       id={card.id}
       key={card.id}
@@ -63,6 +65,17 @@ export default function App() {
     setAllCards(remainingCards);
   }
 
+  function handleGoHome() {
+    displayedCards = allCards;
+  }
+
+  function handleGoBookmarks() {
+    const bookmarkedCards = allCards.filter(
+      (card) => card.isBookmarked === true
+    );
+    displayedCards = bookmarkedCards;
+  }
+
   return (
     <>
       <Header handleShowForm={handleShowForm} showForm={showForm}>
@@ -71,7 +84,7 @@ export default function App() {
       <Main>
         <CardList>{cardList}</CardList>
       </Main>
-      <NavBar />
+      <NavBar onGoHome={handleGoHome} onGoBookmarks={handleGoBookmarks} />
     </>
   );
 }
