@@ -6,7 +6,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  width: 100%;
+  width: 100vw;
   height: 20em;
   z-index: 2;
   background-color: var(--color-lilac);
@@ -18,21 +18,22 @@
 
 .nav-bar__button {
   height: 100%;
-  font-size: 2.5em;
   background-color: var(--color-lilac);
   flex-grow: 1;
+  width: 33.3vw;
 }
 
 .home-icon-svg {
   box-sizing: border-box;
-  width: 1.4em;
+  height: 4.6em;
 }
 
 .bookmark-icon-svg {
-  height: 1.5em;
+  height: 4.6em;
   box-sizing: border-box;
 }
 
 .settings-icon-svg {
-  width: 1em;
+  height: 4.6em;
+  box-sizing: border-box;
 }
