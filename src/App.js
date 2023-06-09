@@ -16,6 +16,8 @@ export default function App() {
 
   const [displayedCards, setDisplayedCards] = useState(allCards);
 
+  const [cardListTitle, setCardListTitle] = useState("Home");
+
   const [showForm, setShowForm] = useState(false);
 
   let cardList = displayedCards.map((card) => (
@@ -54,6 +56,7 @@ export default function App() {
   function handleShowTaggedCards(tagID) {
     const taggedCards = allCards.filter((card) => card.tags.includes(tagID));
     setDisplayedCards(taggedCards);
+    setCardListTitle(`Cards tagged as #${tagID}:`);
   }
 
   function handleToggleBookmark(toBookmarkId) {
@@ -77,12 +80,17 @@ export default function App() {
   }
 
   function handleDeleteCard(toDeleteId) {
-    const remainingCards = allCards.filter((card) => toDeleteId !== card.id);
-    setAllCards(remainingCards);
+    setAllCards((prevAllCards) => {
+      prevAllCards.filter((card) => toDeleteId !== card.id);
+    });
+    setDisplayedCards((prevDisplayedCards) => {
+      prevDisplayedCards.filter((card) => toDeleteId !== card.id);
+    });
   }
 
   function handleGoHome() {
     setDisplayedCards(allCards);
+    setCardListTitle("Home");
   }
 
   function handleGoBookmarks() {
@@ -90,6 +98,7 @@ export default function App() {
       (card) => card.isBookmarked === true
     );
     setDisplayedCards(bookmarkedCards);
+    setCardListTitle("Bookmarked Cards");
   }
 
   return (
@@ -98,7 +107,7 @@ export default function App() {
         <CardForm onSubmit={handleSubmitCardForm} showForm={showForm} />
       </Header>
       <Main>
-        <CardList>{cardList}</CardList>
+        <CardList cardListTitle={cardListTitle}>{cardList}</CardList>
       </Main>
       <NavBar onGoHome={handleGoHome} onGoBookmarks={handleGoBookmarks} />
     </>
