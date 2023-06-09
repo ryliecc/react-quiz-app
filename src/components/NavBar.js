@@ -2,9 +2,15 @@ import { ReactComponent as BookmarkFilledIconSVG } from "./../assets/bookmark-fi
 import { ReactComponent as HomeSVG } from "./../assets/Home.svg";
 import { ReactComponent as SettingsSVG } from "./../assets/settings.svg";
 
-export default function NavBar({ onGoHome, onGoBookmarks, onGoCardForm }) {
+export default function NavBar({
+  onGoHome,
+  onGoBookmarks,
+  onGoCardForm,
+  children,
+}) {
   return (
-    <footer className="nav-bar__footer">
+    <footer className="footer">
+      {children}
       <nav className="nav-bar">
         <button type="button" className="nav-bar__button" onClick={onGoHome}>
           <HomeSVG className="home-icon-svg" />

@@ -8,6 +8,7 @@ import Main from "./components/Main";
 import { defaultCards } from "./data.js";
 import Card from "./components/Card";
 import { useState } from "react";
+import Settings from "./components/Settings";
 
 export default function App() {
   const [allCards, setAllCards] = useLocalStorageState("allCards", {
@@ -109,7 +110,9 @@ export default function App() {
       <Main>
         <CardList cardListTitle={cardListTitle}>{cardList}</CardList>
       </Main>
-      <NavBar onGoHome={handleGoHome} onGoBookmarks={handleGoBookmarks} />
+      <NavBar onGoHome={handleGoHome} onGoBookmarks={handleGoBookmarks}>
+        <Settings />
+      </NavBar>
     </>
   );
 }
