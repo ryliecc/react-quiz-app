@@ -36,7 +36,7 @@ export default function App() {
   function handleSubmitCardForm(event) {
     event.preventDefault();
     const form = event.target;
-    const tags = form.elements.tags.value.split(" ");
+    const tags = form.elements.tags.value.split(",");
     const newCard = {
       id: `card-${uid()}`,
       question: form.elements.question.value,
