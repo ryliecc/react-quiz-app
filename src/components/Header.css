@@ -13,9 +13,8 @@
 }
 
 .header__show-form-svg {
-  position: relative;
+  position: absolute;
   width: 3em;
-  right: 0;
-  top: 0;
-  box-sizing: border-box;
+  right: 0.5em;
+  top: 1em;
 }
