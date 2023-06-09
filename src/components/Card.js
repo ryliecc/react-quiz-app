@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { uid } from "uid";
+import { ReactComponent as BookmarkIconSVG } from "./../assets/bookmark.svg";
+import { ReactComponent as BookmarkFilledIconSVG } from "./../assets/bookmark-filled.svg";
 
 export default function Card({
   id,
@@ -16,7 +18,15 @@ export default function Card({
     ? "card__answer"
     : "card__answer card__answer--unhide";
   const buttonText = isHidden ? "Show answer" : "Hide answer";
-  const bookmarkIcon = isBookmarked ? "❤️" : "🤍";
+  const bookmarkIcon = isBookmarked ? (
+    <>
+      <BookmarkFilledIconSVG />
+    </>
+  ) : (
+    <>
+      <BookmarkIconSVG />
+    </>
+  );
 
   const tagList = tags.map((tag) => {
     const tagID = `tag-${uid()}`;
