@@ -5,7 +5,7 @@ import { ReactComponent as SettingsSVG } from "./../assets/settings.svg";
 export default function NavBar({
   onGoHome,
   onGoBookmarks,
-  onGoCardForm,
+  onGoSettings,
   children,
 }) {
   return (
@@ -25,7 +25,7 @@ export default function NavBar({
         <button
           type="button"
           className="nav-bar__button"
-          onClick={onGoCardForm}
+          onClick={onGoSettings}
         >
           <SettingsSVG className="settings-icon-svg" />
         </button>

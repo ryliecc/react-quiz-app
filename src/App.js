@@ -20,6 +20,7 @@ export default function App() {
   const [cardListTitle, setCardListTitle] = useState("Home");
 
   const [showForm, setShowForm] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
 
   let cardList = displayedCards.map((card) => (
     <Card
@@ -102,6 +103,10 @@ export default function App() {
     setCardListTitle("Bookmarked Cards");
   }
 
+  function handleGoSettings() {
+    setShowSettings(!showSettings);
+  }
+
   return (
     <>
       <Header handleShowForm={handleShowForm} showForm={showForm}>
@@ -110,8 +115,12 @@ export default function App() {
       <Main>
         <CardList cardListTitle={cardListTitle}>{cardList}</CardList>
       </Main>
-      <NavBar onGoHome={handleGoHome} onGoBookmarks={handleGoBookmarks}>
-        <Settings />
+      <NavBar
+        onGoHome={handleGoHome}
+        onGoBookmarks={handleGoBookmarks}
+        onGoSettings={handleGoSettings}
+      >
+        <Settings showSettings={showSettings} />
       </NavBar>
     </>
   );

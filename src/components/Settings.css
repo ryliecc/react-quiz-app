@@ -1,0 +1,36 @@
+.settings {
+  width: 85vw;
+  background: linear-gradient(var(--color-rose), 15%, var(--color-lilac));
+  align-self: flex-end;
+  border: solid var(--color-evening-sky) 0.4em;
+  border-radius: 10px;
+  border-bottom: none;
+  border-right: none;
+  padding: 0.4em;
+  padding-right: 0.6em;
+  position: relative;
+  height: 17em;
+  bottom: -2em;
+  right: -1em;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+.settings__heading {
+  font-size: 1.7em;
+  text-transform: uppercase full-width;
+  align-self: center;
+}
+.settings__dark-mode {
+  font-size: 1.4em;
+  margin: 1em;
+}
+.settings__dark-mode-switch {
+  position: absolute;
+  right: 2.5em;
+  top: 2.4em;
+}
+.settings__epilogue {
+  margin: 0.6em;
+  font-size: 1.1em;
+}

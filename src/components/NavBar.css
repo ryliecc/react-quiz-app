@@ -2,23 +2,22 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   bottom: 0;
   left: 0;
   right: 0;
   width: 100vw;
-  height: 20em;
   z-index: 2;
-  background-color: var(--color-lilac);
 }
 .nav-bar {
   display: flex;
-  height: 20%;
+  height: 4em;
+  background-color: var(--color-lilac);
+  z-index: inherit;
 }
 
 .nav-bar__button {
   height: 100%;
-  background-color: var(--color-lilac);
   flex-grow: 1;
   width: 33.3vw;
 }
