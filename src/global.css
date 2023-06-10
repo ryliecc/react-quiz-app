@@ -17,5 +17,5 @@
 }
 
 body {
-  background-color: var(--color-lilac);
+  background: linear-gradient(var(--color-rose), 40%, var(--color-lilac));
 }
