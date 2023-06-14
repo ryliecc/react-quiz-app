@@ -12,7 +12,7 @@
 .nav-bar {
   display: flex;
   height: 4em;
-  background-color: var(--color-lilac);
+  background-color: var(--color-background-bottom);
   z-index: inherit;
 }
 

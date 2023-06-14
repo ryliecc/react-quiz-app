@@ -1,21 +1,37 @@
-:root {
-  --color-rose: #f7cac9;
-  --color-rose-lilac: #dec2cb;
-  --color-lilac-evening-sky: #c5b9cd;
-  --color-lilac: #abb1cf;
-  --color-evening-sky: #92a8d1;
-  --color-muted-black: #4e4e56;
-  --color-muted-beige: #dcd0c0;
-  --color-muted-cream: #b1938b;
+.App {
+  color: var(--color-text);
+  background: linear-gradient(
+    var(--color-background-top),
+    40%,
+    var(--color-background-bottom)
+  );
+}
+
+.dark-mode--false {
+  --color-background-top: #f7cac9;
+  --color-border: #895e6c;
+  --color-background-center: #c5b9cd;
+  --color-background-bottom: #abb1cf;
+  --color-border-accent: #92a8d1;
+  --color-text: #4e4e56;
+  --color-card-color: #b1938b;
+  --color-card-accent: #dcd0c0;
+}
+
+.dark-mode--true {
+  --color-background-top: #9b6867;
+  --color-border: #966172;
+  --color-background-center: #6b5479;
+  --color-background-bottom: #40476f;
+  --color-border-accent: #3c547f;
+  --color-text: #dcd0c0;
+  --color-card-color: #b1938b;
+  --color-card-accent: #4e4e56;
 }
 
 * {
   background-color: transparent;
-  color: var(--color-muted-black);
+
   margin: 0;
   padding: 0;
-}
-
-body {
-  background: linear-gradient(var(--color-rose), 40%, var(--color-lilac));
 }

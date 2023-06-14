@@ -7,8 +7,8 @@
   gap: 0.8em;
 }
 .card-list__title {
-  border: solid var(--color-muted-cream);
-  background-color: var(--color-muted-beige);
+  border: solid var(--color-card-accent);
+  background-color: var(--color-card-color);
   text-align: center;
   padding: 0.4em;
 }

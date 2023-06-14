@@ -1,5 +1,5 @@
 .header {
-  background-color: var(--color-rose);
+  background-color: var(--color-background-top);
   height: 5em;
   display: flex;
   justify-content: space-around;
