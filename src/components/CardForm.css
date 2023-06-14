@@ -9,11 +9,11 @@
   gap: 0.4em;
   padding: 1em;
   background: linear-gradient(
-    var(--color-rose),
+    var(--color-background-top),
     20%,
-    var(--color-lilac-evening-sky)
+    var(--color-background-center)
   );
-  border: solid var(--color-rose-lilac);
+  border: solid var(--color-border);
   border-bottom-left-radius: 10px;
   border-top: none;
   border-right: none;
@@ -21,7 +21,7 @@
 }
 
 .card-form__title {
-  color: var(--color-evening-sky);
+  color: var(--color-border-accent);
 }
 
 .card-form__question {
@@ -46,6 +46,6 @@
   padding: 0.2em;
   border-radius: 10px;
   align-self: center;
-  background-color: var(--color-lilac-evening-sky);
+  background-color: var(--color-background-center);
   color: var(--color-granite);
 }

@@ -9,6 +9,7 @@ import { defaultCards } from "./data.js";
 import Card from "./components/Card";
 import { useState } from "react";
 import Settings from "./components/Settings";
+import { DarkModeSwitch } from "react-toggle-dark-mode";
 
 export default function App() {
   const [allCards, setAllCards] = useLocalStorageState("allCards", {
@@ -21,6 +22,8 @@ export default function App() {
 
   const [showForm, setShowForm] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+
+  const [isDarkMode, setDarkMode] = useState(false);
 
   let cardList = displayedCards.map((card) => (
     <Card
@@ -107,8 +110,12 @@ export default function App() {
     setShowSettings(!showSettings);
   }
 
+  function toggleDarkMode() {
+    setDarkMode(!isDarkMode);
+  }
+
   return (
-    <>
+    <div className={"App dark-mode--" + isDarkMode}>
       <Header handleShowForm={handleShowForm} showForm={showForm}>
         <CardForm onSubmit={handleSubmitCardForm} showForm={showForm} />
       </Header>
@@ -120,8 +127,15 @@ export default function App() {
         onGoBookmarks={handleGoBookmarks}
         onGoSettings={handleGoSettings}
       >
-        <Settings showSettings={showSettings} />
+        <Settings showSettings={showSettings}>
+          <DarkModeSwitch
+            checked={isDarkMode}
+            onChange={() => toggleDarkMode(isDarkMode)}
+            size={30}
+            className="dark-mode-switch"
+          />
+        </Settings>
       </NavBar>
-    </>
+    </div>
   );
 }

@@ -1,8 +1,12 @@
 .settings {
   width: 85vw;
-  background: linear-gradient(var(--color-rose), 15%, var(--color-lilac));
+  background: linear-gradient(
+    var(--color-background-top),
+    15%,
+    var(--color-background-bottom)
+  );
   align-self: flex-end;
-  border: solid var(--color-evening-sky) 0.4em;
+  border: solid var(--color-border-accent) 0.4em;
   border-radius: 10px;
   border-bottom: none;
   border-right: none;
