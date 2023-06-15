@@ -6,7 +6,7 @@ import CardList from "./components/CardList";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import { defaultCards } from "./data.js";
-import Card from "./components/Card";
+/* import Card from "./components/Card"; */
 import { useState } from "react";
 import Settings from "./components/Settings";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
@@ -25,7 +25,7 @@ export default function App() {
 
   const [isDarkMode, setDarkMode] = useState(false);
 
-  let cardList = displayedCards.map((card) => (
+  /* let cardList = displayedCards.map((card) => (
     <Card
       id={card.id}
       key={card.id}
@@ -37,7 +37,7 @@ export default function App() {
       onToggleBookmark={handleToggleBookmark}
       onDeleteCard={handleDeleteCard}
     />
-  ));
+  )); */
 
   function handleShowForm() {
     setShowForm(!showForm);
@@ -58,11 +58,11 @@ export default function App() {
     form.reset();
   }
 
-  function handleShowTaggedCards(tagID) {
+  /* function handleShowTaggedCards(tagID) {
     const taggedCards = allCards.filter((card) => card.tags.includes(tagID));
     setDisplayedCards(taggedCards);
     setCardListTitle(`Cards tagged as #${tagID}:`);
-  }
+  } */
 
   function handleToggleBookmark(toBookmarkId) {
     setAllCards((prevAllCards) =>
@@ -120,7 +120,14 @@ export default function App() {
         <CardForm onSubmit={handleSubmitCardForm} showForm={showForm} />
       </Header>
       <Main>
-        <CardList cardListTitle={cardListTitle}>{cardList}</CardList>
+        <CardList
+          cardListTitle={cardListTitle}
+          allCards={allCards}
+          displayedCards={displayedCards}
+          setDisplayedCards={setDisplayedCards}
+          setAllCards={setAllCards}
+          setCardListTitle={setCardListTitle}
+        />
       </Main>
       <NavBar
         onGoHome={handleGoHome}

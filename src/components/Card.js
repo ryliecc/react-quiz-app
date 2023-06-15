@@ -10,9 +10,10 @@ export default function Card({
   answer,
   tags,
   isBookmarked,
-  onShowTaggedCards,
-  onToggleBookmark,
-  onDeleteCard,
+  setDisplayedCards,
+  setAllCards,
+  setCardListTitle,
+  allCards,
 }) {
   const [isHidden, setHidden] = useState(true);
   const answerClass = isHidden
@@ -36,7 +37,7 @@ export default function Card({
         className="card__tag-list-item"
         id={tagID}
         key={tagID}
-        onClick={() => onShowTaggedCards(tag)}
+        onClick={() => handleShowTaggedCards(tag)}
       >
         # {tag}
       </li>
@@ -45,6 +46,41 @@ export default function Card({
 
   function handleShowAnswer() {
     setHidden(!isHidden);
+  }
+
+  function handleShowTaggedCards(tagID) {
+    const taggedCards = allCards.filter((card) => card.tags.includes(tagID));
+    setDisplayedCards(taggedCards);
+    setCardListTitle(`Cards tagged as #${tagID}:`);
+  }
+
+  function handleToggleBookmark(toBookmarkId) {
+    setAllCards((prevAllCards) =>
+      prevAllCards.map((card) => {
+        if (toBookmarkId === card.id) {
+          return { ...card, isBookmarked: !card.isBookmarked };
+        }
+        return card;
+      })
+    );
+
+    setDisplayedCards((prevDisplayedCards) =>
+      prevDisplayedCards.map((card) => {
+        if (toBookmarkId === card.id) {
+          return { ...card, isBookmarked: !card.isBookmarked };
+        }
+        return card;
+      })
+    );
+  }
+
+  function handleDeleteCard(toDeleteId) {
+    setAllCards((prevAllCards) => {
+      return prevAllCards.filter((card) => toDeleteId !== card.id);
+    });
+    setDisplayedCards((prevDisplayedCards) => {
+      return prevDisplayedCards.filter((card) => toDeleteId !== card.id);
+    });
   }
 
   return (
@@ -64,13 +100,13 @@ export default function Card({
         <button
           type="button"
           className="card__bookmark-button"
-          onClick={() => onToggleBookmark(id)}
+          onClick={() => handleToggleBookmark(id)}
         >
           {bookmarkIcon}
         </button>
         <XMarkSVG
           className="card__delete-button"
-          onClick={() => onDeleteCard(id)}
+          onClick={() => handleDeleteCard(id)}
         />
       </ul>
     </section>
