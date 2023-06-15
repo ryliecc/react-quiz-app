@@ -1,4 +1,8 @@
-export default function CardForm({ onSubmit, showForm }) {
+export default function CardForm({ showForm }) {
+  function handleShowForm() {
+    setShowForm(!showForm);
+  }
+
   return (
     <form
       onSubmit={onSubmit}

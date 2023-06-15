@@ -24,10 +24,6 @@ export default function App() {
 
   const [isDarkMode, setDarkMode] = useState(false);
 
-  function handleShowForm() {
-    setShowForm(!showForm);
-  }
-
   function handleSubmitCardForm(event) {
     event.preventDefault();
     const form = event.target;
@@ -66,7 +62,7 @@ export default function App() {
 
   return (
     <div className={"App dark-mode--" + isDarkMode}>
-      <Header handleShowForm={handleShowForm} showForm={showForm}>
+      <Header showForm={showForm} setShowForm={setShowForm}>
         <CardForm onSubmit={handleSubmitCardForm} showForm={showForm} />
       </Header>
       <Main>
