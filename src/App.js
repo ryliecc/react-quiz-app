@@ -6,7 +6,6 @@ import CardList from "./components/CardList";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import { defaultCards } from "./data.js";
-/* import Card from "./components/Card"; */
 import { useState } from "react";
 import Settings from "./components/Settings";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
@@ -25,20 +24,6 @@ export default function App() {
 
   const [isDarkMode, setDarkMode] = useState(false);
 
-  /* let cardList = displayedCards.map((card) => (
-    <Card
-      id={card.id}
-      key={card.id}
-      question={card.question}
-      answer={card.answer}
-      tags={card.tags}
-      onShowTaggedCards={handleShowTaggedCards}
-      isBookmarked={card.isBookmarked}
-      onToggleBookmark={handleToggleBookmark}
-      onDeleteCard={handleDeleteCard}
-    />
-  )); */
-
   function handleShowForm() {
     setShowForm(!showForm);
   }
@@ -56,41 +41,6 @@ export default function App() {
     };
     setAllCards([newCard, ...allCards]);
     form.reset();
-  }
-
-  /* function handleShowTaggedCards(tagID) {
-    const taggedCards = allCards.filter((card) => card.tags.includes(tagID));
-    setDisplayedCards(taggedCards);
-    setCardListTitle(`Cards tagged as #${tagID}:`);
-  } */
-
-  function handleToggleBookmark(toBookmarkId) {
-    setAllCards((prevAllCards) =>
-      prevAllCards.map((card) => {
-        if (toBookmarkId === card.id) {
-          return { ...card, isBookmarked: !card.isBookmarked };
-        }
-        return card;
-      })
-    );
-
-    setDisplayedCards((prevDisplayedCards) =>
-      prevDisplayedCards.map((card) => {
-        if (toBookmarkId === card.id) {
-          return { ...card, isBookmarked: !card.isBookmarked };
-        }
-        return card;
-      })
-    );
-  }
-
-  function handleDeleteCard(toDeleteId) {
-    setAllCards((prevAllCards) => {
-      return prevAllCards.filter((card) => toDeleteId !== card.id);
-    });
-    setDisplayedCards((prevDisplayedCards) => {
-      return prevDisplayedCards.filter((card) => toDeleteId !== card.id);
-    });
   }
 
   function handleGoHome() {
