@@ -23,18 +23,6 @@ export default function App() {
 
   const [isDarkMode, setDarkMode] = useState(false);
 
-  function handleGoBookmarks() {
-    const bookmarkedCards = allCards.filter(
-      (card) => card.isBookmarked === true
-    );
-    setDisplayedCards(bookmarkedCards);
-    setCardListTitle("Bookmarked Cards");
-  }
-
-  function handleGoSettings() {
-    setShowSettings(!showSettings);
-  }
-
   function toggleDarkMode() {
     setDarkMode(!isDarkMode);
   }
@@ -62,8 +50,8 @@ export default function App() {
         setCardListTitle={setCardListTitle}
         setDisplayedCards={setDisplayedCards}
         allCards={allCards}
-        onGoBookmarks={handleGoBookmarks}
-        onGoSettings={handleGoSettings}
+        setShowSettings={setShowSettings}
+        showSettings={showSettings}
       >
         <Settings showSettings={showSettings}>
           <DarkModeSwitch
