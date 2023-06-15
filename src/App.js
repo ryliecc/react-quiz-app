@@ -1,14 +1,13 @@
 import useLocalStorageState from "use-local-storage-state";
-import { uid } from "uid";
+import { defaultCards } from "./data.js";
+import { DarkModeSwitch } from "react-toggle-dark-mode";
+import { useState } from "react";
 import NavBar from "./components/NavBar";
 import CardForm from "./components/CardForm";
 import CardList from "./components/CardList";
 import Header from "./components/Header";
 import Main from "./components/Main";
-import { defaultCards } from "./data.js";
-import { useState } from "react";
 import Settings from "./components/Settings";
-import { DarkModeSwitch } from "react-toggle-dark-mode";
 
 export default function App() {
   const [allCards, setAllCards] = useLocalStorageState("allCards", {
@@ -23,21 +22,6 @@ export default function App() {
   const [showSettings, setShowSettings] = useState(false);
 
   const [isDarkMode, setDarkMode] = useState(false);
-
-  function handleSubmitCardForm(event) {
-    event.preventDefault();
-    const form = event.target;
-    const tags = form.elements.tags.value.split(",");
-    const newCard = {
-      id: `card-${uid()}`,
-      question: form.elements.question.value,
-      answer: form.elements.answer.value,
-      tags: [...tags],
-      isBookmarked: false,
-    };
-    setAllCards([newCard, ...allCards]);
-    form.reset();
-  }
 
   function handleGoHome() {
     setDisplayedCards(allCards);
@@ -63,7 +47,11 @@ export default function App() {
   return (
     <div className={"App dark-mode--" + isDarkMode}>
       <Header showForm={showForm} setShowForm={setShowForm}>
-        <CardForm onSubmit={handleSubmitCardForm} showForm={showForm} />
+        <CardForm
+          showForm={showForm}
+          allCards={allCards}
+          setAllCards={setAllCards}
+        />
       </Header>
       <Main>
         <CardList

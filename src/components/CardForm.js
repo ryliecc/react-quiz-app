@@ -1,11 +1,23 @@
-export default function CardForm({ showForm }) {
-  function handleShowForm() {
-    setShowForm(!showForm);
-  }
+import { uid } from "uid";
 
+export default function CardForm({ showForm, allCards, setAllCards }) {
+  function handleSubmitCardForm(event) {
+    event.preventDefault();
+    const form = event.target;
+    const tags = form.elements.tags.value.split(",");
+    const newCard = {
+      id: `card-${uid()}`,
+      question: form.elements.question.value,
+      answer: form.elements.answer.value,
+      tags: [...tags],
+      isBookmarked: false,
+    };
+    setAllCards([newCard, ...allCards]);
+    form.reset();
+  }
   return (
     <form
-      onSubmit={onSubmit}
+      onSubmit={handleSubmitCardForm}
       className="card-form"
       style={{ visibility: showForm ? "visible" : "collapse" }}
     >
