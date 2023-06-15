@@ -23,11 +23,6 @@ export default function App() {
 
   const [isDarkMode, setDarkMode] = useState(false);
 
-  function handleGoHome() {
-    setDisplayedCards(allCards);
-    setCardListTitle("Home");
-  }
-
   function handleGoBookmarks() {
     const bookmarkedCards = allCards.filter(
       (card) => card.isBookmarked === true
@@ -64,7 +59,9 @@ export default function App() {
         />
       </Main>
       <NavBar
-        onGoHome={handleGoHome}
+        setCardListTitle={setCardListTitle}
+        setDisplayedCards={setDisplayedCards}
+        allCards={allCards}
         onGoBookmarks={handleGoBookmarks}
         onGoSettings={handleGoSettings}
       >
